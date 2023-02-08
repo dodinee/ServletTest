@@ -17,14 +17,15 @@ public class NoticeReg extends HttpServlet{
 		
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=UTF-8");
+//		req.setCharacterEncoding("UTF-8");
 		
 		PrintWriter out = resp.getWriter();
 		
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		
-		out.print("your title = " + title + "<br>");
-		out.print("your content = " + content);
+		out.println("*** your title = " + title + "<br>");
+		out.print("*** your content = " + content);
 		
 	}// service
 }// end class
