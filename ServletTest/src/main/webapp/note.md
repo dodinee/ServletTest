@@ -63,6 +63,23 @@ addCookies() : save at client
 
 setPath("url")
 setMaxAge() : set expiration sec
+setMaxAge(0) = delete cookie
+
+
+el이 탐색하는 저장소 순서 
+
+- page = pagecontext : page내에서 가용한 서블릿 객체들 (페이지 단위 저장소) 
+- request
+- session
+- application
+
+
+스코프를 지정하면 특정 저장소에서만 탐색
+pageScope
+requestScope
+sessionScope
+applicationScope
+
 
 
 
