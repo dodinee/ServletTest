@@ -34,4 +34,41 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+	
+	
+	
+	
+	
+	<!-- <listener>
+        <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
+    </listener>
+ 
+    <filter>
+        <filter-name>log4jServletFilter</filter-name>
+        <filter-class>org.apache.logging.log4j.web.Log4jServletFilter</filter-class>
+    </filter>
+   
+    log4j 서블릿 필터를 적용할 요청 종류를 지정한다. 이 중 ASYNC는 서블릿 3.0 이상에서만 사용 가능하다
+    원하는 url 맵핑을 해주면 된다. 아래 예제는 모든 URL의 모든 형태의 요청에 대해 Log4j 서블릿 필터를 적용한 것이다.
+    <filter-mapping>
+        <filter-name>log4jServletFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+        <dispatcher>ASYNC</dispatcher>
+    </filter-mapping>
+
+    생략 가능하다. 별도로 설정하지 않으면 기본 서블릿컨텍스트 이름을 사용한다
+    <context-param>
+        <param-name>log4jContextName</param-name>
+        <param-value>myApplication</param-value>
+    </context-param>
+   
+    log4j2의 설정 파일 위치를 지정한다.     
+    <context-param>
+        <param-name>log4jConfiguration</param-name>
+        <param-value>/WEB-INF/log4j2.xml</param-value>
+    </context-param> -->
 </web-app>
