@@ -1,4 +1,4 @@
-package com.temp.web.controller;
+package com.temp.web.controller.notice;
 
 import java.io.IOException;
 

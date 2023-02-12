@@ -1,4 +1,4 @@
-package com.temp.web.controller;
+package com.temp.web.controller.admin;
 
 import java.io.IOException;
 
@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/index")
+@WebServlet("/admin/index")
 public class IndexController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		
-		req.getRequestDispatcher("/WEB-INF/view/index.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/view/admin/index.jsp").forward(req, resp);
 	}
 }// end class

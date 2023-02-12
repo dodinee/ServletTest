@@ -12,8 +12,8 @@ public class NoticeView extends Notice {
 		super();
 	}
 
-	public NoticeView(int cd, String title, Timestamp createdDt, int userCd, int likeCnt, String contents, int reCnt) {
-		super(cd, title, createdDt, userCd, likeCnt, contents);
+	public NoticeView(int cd, String title, Timestamp createdDt, int userCd, int likeCnt, String contents, boolean pub, int reCnt) {
+		super(cd, title, createdDt, userCd, likeCnt, contents, pub);
 		this.reCnt = reCnt;
 	}
 

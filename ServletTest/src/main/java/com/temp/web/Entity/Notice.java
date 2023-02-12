@@ -11,11 +11,12 @@ public class Notice {
 	private int userCd;
 	private int likeCnt;
 	private String contents;
+	private boolean pub;
 	
 	public Notice() {
 		super();
 	}
-	public Notice(int cd, String title, Timestamp createdDt, int userCd, int likeCnt, String contents) {
+	public Notice(int cd, String title, Timestamp createdDt, int userCd, int likeCnt, String contents, boolean pub) {
 		super();
 		this.cd = cd;
 		this.title = title;
@@ -23,6 +24,14 @@ public class Notice {
 		this.userCd = userCd;
 		this.likeCnt = likeCnt;
 		this.contents = contents;
+		this.pub = pub;
+	}
+	
+	public boolean isPub() {
+		return pub;
+	}
+	public void setPub(boolean pub) {
+		this.pub = pub;
 	}
 	public int getCd() {
 		return cd;

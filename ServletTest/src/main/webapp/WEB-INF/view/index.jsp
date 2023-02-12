@@ -147,7 +147,7 @@
 
                     <li>
                         <span class="notice-title">
-                            <a href="notice/detail.html">스프링 8강까지의 예제 코드</a>
+                            <a href="notice/list.jsp">스프링 8강까지의 예제 코드</a>
                         </span>
                         <span>2019-08-18</span>
                     </li>

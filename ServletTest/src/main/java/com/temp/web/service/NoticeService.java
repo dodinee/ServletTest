@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,8 +52,9 @@ public class NoticeService {
 				int likeCnt = rs.getInt("like_cnt");
 				String contents = rs.getString("contents");
 				int reCnt = rs.getInt("re_cnt");
+				boolean pub = rs.getBoolean("pub");
 
-				NoticeView noticeV = new NoticeView(cd, title, createdDt, userCd, likeCnt, contents, reCnt);
+				NoticeView noticeV = new NoticeView(cd, title, createdDt, userCd, likeCnt, contents, pub, reCnt);
 				list.add(noticeV);
 			} // while
 
@@ -123,8 +125,9 @@ public class NoticeService {
 			int userCd = rs.getInt("user_cd");
 			int likeCnt = rs.getInt("like_cnt");
 			String contents = rs.getString("contents");
+			boolean pub = rs.getBoolean("pub");
 
-			notice = new Notice(cd, title, createdDt, userCd, likeCnt, contents);
+			notice = new Notice(cd, title, createdDt, userCd, likeCnt, contents, pub);
 
 			rs.close();
 			st.close();
@@ -162,8 +165,9 @@ public class NoticeService {
 			int userCd = rs.getInt("user_cd");
 			int likeCnt = rs.getInt("like_cnt");
 			String contents = rs.getString("contents");
+			boolean pub = rs.getBoolean("pub");
 
-			notice = new Notice(cd, title, createdDt, userCd, likeCnt, contents);
+			notice = new Notice(cd, title, createdDt, userCd, likeCnt, contents, pub);
 
 			rs.close();
 			st.close();
@@ -202,8 +206,9 @@ public class NoticeService {
 			int userCd = rs.getInt("user_cd");
 			int likeCnt = rs.getInt("like_cnt");
 			String contents = rs.getString("contents");
+			boolean pub = rs.getBoolean("pub");
 
-			notice = new Notice(cd, title, createdDt, userCd, likeCnt, contents);
+			notice = new Notice(cd, title, createdDt, userCd, likeCnt, contents, pub);
 
 			rs.close();
 			st.close();
@@ -215,4 +220,95 @@ public class NoticeService {
 		return notice;
 	}
 
+	
+	public int removeNoticeAll (int[] ids) {
+		
+		return 0;
+	}
+	
+	public int pubNoticeall(int[] idx) {
+		
+		return 0;
+	}
+	
+	public int insertNotice(Notice notice) {
+		
+		String param = "";
+		int result = 0;
+		
+		String sql = "INSERT INTO sanreview_tb(sanreview_cd, mountain_cd, created_dt, like_cnt, title, contents, user_cd, pub) "
+				+ "VALUES (sanreview_sq.nextval, 987654321, sysdate, 0, ?, ?, ?, ?)";
+		String url = "jdbc:oracle:thin:@wegodb1_high?TNS_ADMIN=/Users/sowls/wallet/Wallet_wegodb1";
+
+		List<NoticeView> list = new ArrayList<>();
+
+		try {
+
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "admin", "Wego12345678");
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setString(1, notice.getTitle());
+			st.setString(2, notice.getContents());
+			st.setInt(3, notice.getUserCd());
+			st.setBoolean(4, notice.isPub());
+			
+			result = st.executeUpdate();
+
+			st.close();
+			con.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} // try-catch
+
+		return result;
+	}
+	
+	public int deleteNotice(int id) {
+		
+		return 0;
+	}
+	
+	public int updateNotice(Notice notice) {
+		
+		return 0;
+	}
+	
+	public List<Notice> getNoticeViewList(){
+		
+		return null;
+	}
+
+	public int deleteNoticeAll(int[] ids) {
+		
+		int result = 0;
+		String param = "";
+		
+		for(int i = 0; i < ids.length; i++) {
+			param += ids[i];
+			
+			if(i != ids.length - 1) {
+				param += ",";
+			}
+		}
+		
+		String sql = "DELETE sanreview_tb where sanreview_cd IN (" + param + ")";
+		String url = "jdbc:oracle:thin:@wegodb1_high?TNS_ADMIN=/Users/sowls/wallet/Wallet_wegodb1";
+
+		List<NoticeView> list = new ArrayList<>();
+
+		try {
+
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "admin", "Wego12345678");
+			Statement st = con.createStatement();
+			result = st.executeUpdate(sql);
+
+			st.close();
+			con.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} // try-catch
+
+		return result;
+	}
 }// end class
